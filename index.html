@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caja de 9 Bombones</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="logo.png" alt="Logo de la empresa" class="logo">
+    </header>
+    <main>
+      <h1>Caja de 9 Bombones</h1>
+      <p class="price">
+        <span class="original-price">12 €</span>
+        <span class="discounted-price">8 €</span>
+      </p>
+      <section class="flavors">
+        <h2>Elige tus sabores</h2>
+        <div class="flavor-card" data-name="Chocolate Blanco">
+          <div class="flavor-front">
+            <div class="color-swatch" style="background-color: #f5e8c7;"></div>
+            <p>Chocolate Blanco</p>
+          </div>
+          <div class="flavor-back">
+            <p>Ingredientes: Chocolate blanco, leche, azúcar.</p>
+          </div>
+          <div class="counter">
+            <button class="minus" onclick="updateCount(this, -1)">-</button>
+            <span class="count">0</span>
+            <button class="plus" onclick="updateCount(this, 1)">+</button>
+          </div>
+        </div>
+        <!-- Repite esta estructura para los 10 sabores -->
+      </section>
+      <button class="order-button" onclick="openOrderForm()">Hacer mi pedido</button>
+    </main>
+  </div>
+
+  <!-- Pop-up para el pedido -->
+  <div class="order-popup hidden">
+    <form id="orderForm">
+      <label for="name">Nombre:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="date">Fecha de entrega:</label>
+      <input type="date" id="date" name="date" required>
+      <button type="button" onclick="sendOrder()">Enviar Pedido</button>
+    </form>
+  </div>
+</body>
+</html>
