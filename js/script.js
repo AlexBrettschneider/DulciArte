@@ -35,14 +35,38 @@ function submitOrder() {
     const address = document.getElementById('address').value;
     const date = document.getElementById('date').value;
     const comments = document.getElementById('comments').value;
+    const boxCount = document.getElementById('box-count').innerText; // Cantidad de cajas
 
+    // Recoger los sabores seleccionados y sus cantidades
+    const flavorCards = document.querySelectorAll('.flavor-wrapper');
+    let flavorsSummary = "";
+    flavorCards.forEach((card, index) => {
+        const flavorName = card.querySelector('.flavor-name').innerText;
+        const count = card.querySelector('.count').innerText;
+
+        if (parseInt(count) > 0) { // Solo incluye sabores seleccionados
+            flavorsSummary += `- ${flavorName}: ${count} unidades%0A`;
+        }
+    });
+
+    // Validación de campos obligatorios
     if (name && address && date) {
-        const body = `Nombre: ${name}\nDirección: ${address}\nFecha: ${date}\nComentarios: ${comments}`;
-        window.open(`mailto:tucorreo@empresa.com?subject=Pedido Bombones&body=${encodeURIComponent(body)}`);
+        const subject = "Pedido de Bombones - DulciArte";
+        const body = `Nombre: ${name}%0A` +
+                     `Dirección: ${address}%0A` +
+                     `Fecha de Entrega: ${date}%0A` +
+                     `Comentarios: ${comments}%0A%0A` +
+                     `Cantidad de Cajas: ${boxCount}%0A` +
+                     `Detalle de sabores:%0A${flavorsSummary}`;
+
+        // Reemplaza con tu correo
+        window.location.href = `mailto:corizam.cz@gmail.com?cc=alexbrett1996@gmail.com&subject=${subject}&body=${body}`;
+
     } else {
-        alert("Por favor, completa todos los campos.");
+        alert("Por favor, completa todos los campos obligatorios antes de confirmar el pedido.");
     }
 }
+
 
 function resetCounters() {
     currentCount = 0;
