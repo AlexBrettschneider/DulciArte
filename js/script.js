@@ -83,3 +83,25 @@ document.addEventListener("DOMContentLoaded", function () {
         dateInput.setAttribute('min', minDate);
     }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const dateInput = document.getElementById('date');
+    if (dateInput) {
+        // Obtener la fecha actual
+        const today = new Date();
+        today.setDate(today.getDate() + 4); // Sumar 4 días
+        const minDate = today.toISOString().split('T')[0];
+
+        // Establecer el valor mínimo del input
+        dateInput.setAttribute('min', minDate);
+
+        // Validación manual para móviles y navegadores no compatibles
+        dateInput.addEventListener('input', function () {
+            const selectedDate = new Date(this.value);
+            if (selectedDate < today) {
+                alert("Por favor, selecciona una fecha que sea al menos 4 días después de hoy.");
+                this.value = ""; // Borra la fecha seleccionada inválida
+            }
+        });
+    }
+});
