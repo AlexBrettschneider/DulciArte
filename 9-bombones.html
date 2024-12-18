@@ -10,7 +10,19 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="title">Elije tus sabores</h1>
+        <h1 class="title">Caja de 9 Bombones</h1>
+        <div class="price-section">
+            <div class="block-price">
+                <div class="price-block">
+                    <strong>Precio:</strong>
+                </div>
+                <div class="Price-block-2">
+                    <span class="original-price">12,00€</span>
+                    <span class="discounted-price">10,00€</span>
+                </div>
+                
+            </div>
+        </div>
 
         <!-- Contador de cajas -->
         <div class="box-counter">
@@ -23,7 +35,9 @@
                 </div>
             </div>
         </div>
-        
+        <div>
+            <h1>Elije tus sabores</h1>
+        </div>
 
         <!-- Grid de tarjetas -->
         <div class="flavor-grid">
@@ -32,14 +46,13 @@
                 <div class="flavor-card" onclick="flipCard(this)">
                     <div class="flavor-front">
                         <div class="color-palette">
-                            <div class="color-circle" style="background-color: #f5e8c7;"></div>
-                            <div class="color-circle" style="background-color: #000;"></div>
-                            <div class="color-circle" style="background-color: #ff0;"></div>
+                            <div class="color-circle" style="background-color: #ffffff;"></div>
+                            <div class="color-circle" style="background-color: #efb810;"></div>
                         </div>
-                        <p class="flavor-name">Sabor 1</p>
+                        <p class="flavor-name">Dulce de leche</p>
                     </div>
                     <div class="flavor-back">
-                        <p>Ingredientes: Chocolate blanco, limón...</p>
+                        <p>Ingredientes: Chocolate semiamargo 60%, dulce de leche, manteca de cacao, colorantes en polvo liposolubles. Sin conservantes.</p>
                     </div>
                 </div>
                 <div class="counter">
@@ -52,14 +65,13 @@
                 <div class="flavor-card" onclick="flipCard(this)">
                     <div class="flavor-front">
                         <div class="color-palette">
-                            <div class="color-circle" style="background-color: #f5e8c7;"></div>
+                            <div class="color-circle" style="background-color: #684d09;"></div>
                             <div class="color-circle" style="background-color: #000;"></div>
-                            <div class="color-circle" style="background-color: #ff0;"></div>
                         </div>
-                        <p class="flavor-name">Sabor 2</p>
+                        <p class="flavor-name">Café</p>
                     </div>
                     <div class="flavor-back">
-                        <p>Ingredientes: Chocolate blanco, limón...</p>
+                        <p>Ingredientes: Chocolate semiamargo 60%, chocolate blanco, nata, café soluble, manteca de cacao, colorantes en polvo liposolubles. Sin conservantes.</p>
                     </div>
                 </div>
                 <div class="counter">
@@ -72,14 +84,14 @@
                 <div class="flavor-card" onclick="flipCard(this)">
                     <div class="flavor-front">
                         <div class="color-palette">
-                            <div class="color-circle" style="background-color: #f5e8c7;"></div>
+                            <div class="color-circle" style="background-color: #9e0606;"></div>
                             <div class="color-circle" style="background-color: #000;"></div>
-                            <div class="color-circle" style="background-color: #ff0;"></div>
+                            <div class="color-circle" style="background-color: rgb(255, 255, 6);"></div>
                         </div>
-                        <p class="flavor-name">Sabor 3</p>
+                        <p class="flavor-name">Ganache con almendra</p>
                     </div>
                     <div class="flavor-back">
-                        <p>Ingredientes: Chocolate blanco, limón...</p>
+                        <p>Ingredientes: Chocolate semiamargo 60%, nata, almendras, manteca de cacao, colorantes en polvo liposolubles. Sin conservantes.</p>
                     </div>
                 </div>
                 <div class="counter">
@@ -92,14 +104,14 @@
                 <div class="flavor-card" onclick="flipCard(this)">
                     <div class="flavor-front">
                         <div class="color-palette">
-                            <div class="color-circle" style="background-color: #f5e8c7;"></div>
-                            <div class="color-circle" style="background-color: #000;"></div>
-                            <div class="color-circle" style="background-color: #ff0;"></div>
+                            <div class="color-circle" style="background-color: #ffffff;"></div>
+                            <div class="color-circle" style="background-color: #9f0000;"></div>
+                            <div class="color-circle" style="background-color: #efb810;"></div>
                         </div>
-                        <p class="flavor-name">Sabor 4</p>
+                        <p class="flavor-name">Ganache de fresa</p>
                     </div>
                     <div class="flavor-back">
-                        <p>Ingredientes: Chocolate blanco, limón...</p>
+                        <p>Ingredientes: Chocolate semiamargo 60%, chocolate blanco, fresa, azúcar, nata, manteca de cacao, colorantes en polvo liposolubles. Sin conservantes.</p>
                     </div>
                 </div>
                 <div class="counter">
@@ -112,114 +124,13 @@
                 <div class="flavor-card" onclick="flipCard(this)">
                     <div class="flavor-front">
                         <div class="color-palette">
-                            <div class="color-circle" style="background-color: #f5e8c7;"></div>
-                            <div class="color-circle" style="background-color: #000;"></div>
-                            <div class="color-circle" style="background-color: #ff0;"></div>
+                            <div class="color-circle" style="background-color: #ffffff;"></div>
+                            <div class="color-circle" style="background-color: #1e00b3;"></div>
                         </div>
-                        <p class="flavor-name">Sabor 5</p>
+                        <p class="flavor-name">Marroc</p>
                     </div>
                     <div class="flavor-back">
-                        <p>Ingredientes: Chocolate blanco, limón...</p>
-                    </div>
-                </div>
-                <div class="counter">
-                    <button onclick="updateCount(event, this, -1)">-</button>
-                    <span class="count">0</span>
-                    <button onclick="updateCount(event, this, 1)">+</button>
-                </div>
-            </div>
-            <div class="flavor-wrapper">
-                <div class="flavor-card" onclick="flipCard(this)">
-                    <div class="flavor-front">
-                        <div class="color-palette">
-                            <div class="color-circle" style="background-color: #f5e8c7;"></div>
-                            <div class="color-circle" style="background-color: #000;"></div>
-                            <div class="color-circle" style="background-color: #ff0;"></div>
-                        </div>
-                        <p class="flavor-name">Sabor 6</p>
-                    </div>
-                    <div class="flavor-back">
-                        <p>Ingredientes: Chocolate blanco, limón...</p>
-                    </div>
-                </div>
-                <div class="counter">
-                    <button onclick="updateCount(event, this, -1)">-</button>
-                    <span class="count">0</span>
-                    <button onclick="updateCount(event, this, 1)">+</button>
-                </div>
-            </div>
-            <div class="flavor-wrapper">
-                <div class="flavor-card" onclick="flipCard(this)">
-                    <div class="flavor-front">
-                        <div class="color-palette">
-                            <div class="color-circle" style="background-color: #f5e8c7;"></div>
-                            <div class="color-circle" style="background-color: #000;"></div>
-                            <div class="color-circle" style="background-color: #ff0;"></div>
-                        </div>
-                        <p class="flavor-name">Sabor 7</p>
-                    </div>
-                    <div class="flavor-back">
-                        <p>Ingredientes: Chocolate blanco, limón...</p>
-                    </div>
-                </div>
-                <div class="counter">
-                    <button onclick="updateCount(event, this, -1)">-</button>
-                    <span class="count">0</span>
-                    <button onclick="updateCount(event, this, 1)">+</button>
-                </div>
-            </div>
-            <div class="flavor-wrapper">
-                <div class="flavor-card" onclick="flipCard(this)">
-                    <div class="flavor-front">
-                        <div class="color-palette">
-                            <div class="color-circle" style="background-color: #f5e8c7;"></div>
-                            <div class="color-circle" style="background-color: #000;"></div>
-                            <div class="color-circle" style="background-color: #ff0;"></div>
-                        </div>
-                        <p class="flavor-name">Sabor 8</p>
-                    </div>
-                    <div class="flavor-back">
-                        <p>Ingredientes: Chocolate blanco, limón...</p>
-                    </div>
-                </div>
-                <div class="counter">
-                    <button onclick="updateCount(event, this, -1)">-</button>
-                    <span class="count">0</span>
-                    <button onclick="updateCount(event, this, 1)">+</button>
-                </div>
-            </div>
-            <div class="flavor-wrapper">
-                <div class="flavor-card" onclick="flipCard(this)">
-                    <div class="flavor-front">
-                        <div class="color-palette">
-                            <div class="color-circle" style="background-color: #f5e8c7;"></div>
-                            <div class="color-circle" style="background-color: #000;"></div>
-                            <div class="color-circle" style="background-color: #ff0;"></div>
-                        </div>
-                        <p class="flavor-name">Sabor 9</p>
-                    </div>
-                    <div class="flavor-back">
-                        <p>Ingredientes: Chocolate blanco, limón...</p>
-                    </div>
-                </div>
-                <div class="counter">
-                    <button onclick="updateCount(event, this, -1)">-</button>
-                    <span class="count">0</span>
-                    <button onclick="updateCount(event, this, 1)">+</button>
-                </div>
-            </div>
-            <div class="flavor-wrapper">
-                <div class="flavor-card" onclick="flipCard(this)">
-                    <div class="flavor-front">
-                        <div class="color-palette">
-                            <div class="color-circle" style="background-color: #f5e8c7;"></div>
-                            <div class="color-circle" style="background-color: #000;"></div>
-                            <div class="color-circle" style="background-color: #ff0;"></div>
-                        </div>
-                        <p class="flavor-name">Sabor 10</p>
-                    </div>
-                    <div class="flavor-back">
-                        <p>Ingredientes: Chocolate blanco, limón...</p>
+                        <p>Ingredientes: Chocolate semiamargo 60%, chocolate con leche, chocolate blanco, crema de cacahuete, nata, manteca de cacao, colorantes en polvo liposolubles. Sin conservantes.</p>
                     </div>
                 </div>
                 <div class="counter">
@@ -238,9 +149,11 @@
         <div class="form-container hidden" id="order-form">
             <label for="name">Nombre:</label>
             <input type="text" id="name" required>
+            <label for="phone">Teléfono:</label>
+            <input type="text" id="phone" required>
             <label for="address">Dirección:</label>
             <input type="text" id="address" required>
-            <label for="date">Fecha:</label>
+            <label for="date">Fecha de entrega:</label>
             <input type="date" id="date" required>
             <label for="comments">Comentarios:</label>
             <textarea id="comments"></textarea>

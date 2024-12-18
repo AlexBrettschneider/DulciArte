@@ -146,6 +146,7 @@ body {
     width: 20px;
     height: 20px;
     border-radius: 50%;
+    border: 1px solid black;
 }
 
 .flavor-name {
@@ -236,4 +237,37 @@ body {
 
 .form-container button:hover {
     background-color: #a00000;
+}
+
+/* Sección del precio */
+.price-section {
+    font-size: 1.1em;
+    color: #000; /* Color negro para el texto */
+    margin-bottom: 20px;
+}
+
+.price-section .original-price {
+    text-decoration: line-through; /* Tachar el precio original */
+    color: #a0a0a0; /* Gris para el precio original */
+    margin-right: 5px; /* Espacio entre los precios */
+    font-size: 1em;
+}
+
+.price-section .discounted-price {
+    color: #e60000; /* Rojo para el precio con descuento */
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.block-price {
+    display: inline-flex;
+}
+
+.price-block {
+    display: flex;
+    align-items: center;
+}
+
+.Price-block-2 {
+    display: flex;
+    flex-direction: column;
 }

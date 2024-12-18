@@ -72,3 +72,14 @@ function resetCounters() {
     currentCount = 0;
     document.querySelectorAll('.count').forEach(span => (span.textContent = "0"));
 }
+
+// Establecer fecha mínima de entrega (4 días después del día actual)
+document.addEventListener("DOMContentLoaded", function () {
+    const dateInput = document.getElementById('date');
+    if (dateInput) {
+        const today = new Date();
+        today.setDate(today.getDate() + 4);
+        const minDate = today.toISOString().split('T')[0];
+        dateInput.setAttribute('min', minDate);
+    }
+});
