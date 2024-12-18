@@ -10,15 +10,19 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="title">Elije tus sabores</h1>
+        <h1 class="title">Caja de 12 Bombones</h1>
         <div class="price-section">
-            <p>
-                <strong>Precio:</strong>
-                <span class="original-price">16,00€</span>
-                <span class="discounted-price">14,00€</span>
-            </p>
+            <div class="block-price">
+                <div class="price-block">
+                    <strong>Precio:</strong>
+                </div>
+                <div class="Price-block-2">
+                    <span class="original-price">16,00€</span>
+                    <span class="discounted-price">14,00€</span>
+                </div>
+                
+            </div>
         </div>
-        
 
         <!-- Contador de cajas -->
         <div class="box-counter">
@@ -31,7 +35,9 @@
                 </div>
             </div>
         </div>
-        
+        <div>
+            <h1>Elije tus sabores</h1>
+        </div>
 
         <!-- Grid de tarjetas -->
         <div class="flavor-grid">
@@ -143,9 +149,11 @@
         <div class="form-container hidden" id="order-form">
             <label for="name">Nombre:</label>
             <input type="text" id="name" required>
+            <label for="phone">Teléfono:</label>
+            <input type="text" id="phone" required>
             <label for="address">Dirección:</label>
             <input type="text" id="address" required>
-            <label for="date">Fecha:</label>
+            <label for="date">Fecha de entrega:</label>
             <input type="date" id="date" required>
             <label for="comments">Comentarios:</label>
             <textarea id="comments"></textarea>
