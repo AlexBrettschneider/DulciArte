@@ -1,7 +1,33 @@
-let totalCount = 9; // Máximo inicial para la caja de 9 bombones
+let totalCount = 9; // Máximo inicial para la caja de bombones
 let totalUnitsAllowed = totalCount; // Máximo permitido según cajas seleccionadas
 const boxPrice = 10; // Precio con descuento por caja
 const originalPrice = 12; // Precio original por caja
+
+// Inicializar el comportamiento de la página
+document.addEventListener("DOMContentLoaded", function () {
+    // Determinar si estamos en la página de 12 bombones
+    const is12BombonesPage = document.body.classList.contains('page-12');
+    totalCount = is12BombonesPage ? 12 : 9; // Ajustar según la página
+    totalUnitsAllowed = totalCount; // Inicializar el máximo permitido
+
+    // Establecer la fecha mínima de entrega
+    const dateInput = document.getElementById('date');
+    if (dateInput) {
+        const today = new Date();
+        today.setDate(today.getDate() + 4); // Sumar 4 días
+        const minDate = today.toISOString().split('T')[0];
+        dateInput.setAttribute('min', minDate);
+
+        // Validación manual para navegadores móviles
+        dateInput.addEventListener('input', function () {
+            const selectedDate = new Date(this.value);
+            if (selectedDate < today) {
+                alert("Por favor, selecciona una fecha que sea al menos 4 días después de hoy.");
+                this.value = ""; // Borra la fecha seleccionada inválida
+            }
+        });
+    }
+});
 
 // Actualizar el contador de cajas y recalcular precios
 function updateBoxes(change) {
@@ -56,25 +82,4 @@ function flipCard(card) {
 function showForm() {
     document.getElementById('order-form').classList.remove('hidden');
 }
-
-// Validar la fecha mínima de entrega (4 días después del día actual)
-document.addEventListener("DOMContentLoaded", function () {
-    const dateInput = document.getElementById('date');
-    if (dateInput) {
-        const today = new Date();
-        today.setDate(today.getDate() + 4); // Sumar 4 días
-        const minDate = today.toISOString().split('T')[0];
-        dateInput.setAttribute('min', minDate);
-
-        // Validación manual para móviles y navegadores no compatibles
-        dateInput.addEventListener('input', function () {
-            const selectedDate = new Date(this.value);
-            if (selectedDate < today) {
-                alert("Por favor, selecciona una fecha que sea al menos 4 días después de hoy.");
-                this.value = ""; // Borra la fecha seleccionada inválida
-            }
-        });
-    }
-});
-
 
