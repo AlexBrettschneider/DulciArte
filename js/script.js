@@ -1,14 +1,19 @@
-let totalCount = 9; // Máximo inicial para la caja de bombones
+// Variables globales
+let totalCount = 9; // Máximo inicial para cajas de 9 bombones (valor predeterminado)
 let totalUnitsAllowed = totalCount; // Máximo permitido según cajas seleccionadas
-const boxPrice = 10; // Precio con descuento por caja
-const originalPrice = 12; // Precio original por caja
+let boxPrice = 10; // Precio con descuento por caja (predeterminado)
+let originalPrice = 12; // Precio original por caja (predeterminado)
 
 // Inicializar el comportamiento de la página
 document.addEventListener("DOMContentLoaded", function () {
-    // Determinar si estamos en la página de 12 bombones
+    // Detectar si estamos en la página de 12 bombones
     const is12BombonesPage = document.body.classList.contains('page-12');
-    totalCount = is12BombonesPage ? 12 : 9; // Ajustar según la página
-    totalUnitsAllowed = totalCount; // Inicializar el máximo permitido
+    if (is12BombonesPage) {
+        totalCount = 12; // Ajustar el máximo permitido para cajas de 12 bombones
+        boxPrice = 13; // Precio con descuento para caja de 12 bombones
+        originalPrice = 16; // Precio original para caja de 12 bombones
+    }
+    totalUnitsAllowed = totalCount; // Inicializar el límite de unidades permitidas
 
     // Establecer la fecha mínima de entrega
     const dateInput = document.getElementById('date');
