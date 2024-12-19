@@ -1,26 +1,47 @@
 let totalCount = 9; // Cambiar a 12 en 12-bombones.html
 let currentCount = 0;
 
+let totalUnitsAllowed = 9; // Máximo de bombones por caja
+const boxPrice = 10; // Precio por caja después del descuento
+const originalPrice = 12; // Precio original por caja (sin descuento)
+
 function updateBoxes(change) {
     const boxCount = document.getElementById('box-count');
+    const discountedPriceDisplay = document.getElementById('price-display'); // Precio con descuento
+    const originalPriceDisplay = document.getElementById('original-price-display'); // Precio original
     let value = parseInt(boxCount.textContent) + change;
+
     if (value >= 1) {
         boxCount.textContent = value;
-        totalCount = value * (totalCount === 9 ? 9 : 12); // Ajuste dinámico
-        resetCounters();
+        totalUnitsAllowed = value * 9; // Actualizar el límite de unidades permitido
+
+        // Recalcular precios
+        const totalDiscountedPrice = value * boxPrice;
+        const totalOriginalPrice = value * originalPrice;
+
+        discountedPriceDisplay.textContent = `${totalDiscountedPrice.toFixed(2)}€`;
+        originalPriceDisplay.textContent = `${totalOriginalPrice.toFixed(2)}€`;
+
+        resetCounters(); // Reiniciar los contadores de sabores
     }
 }
 
 function updateCount(event, button, increment) {
-    event.stopPropagation(); // Evita conflictos con flip
+    event.stopPropagation();
     const countSpan = button.parentElement.querySelector('.count');
-    let count = parseInt(countSpan.textContent) + increment;
+    const flavorCards = document.querySelectorAll('.count');
 
-    if (count >= 0 && currentCount + increment <= totalCount) {
-        countSpan.textContent = count;
-        currentCount += increment;
+    let currentTotal = Array.from(flavorCards).reduce((sum, card) => sum + parseInt(card.textContent), 0);
+    let newCount = parseInt(countSpan.textContent) + increment;
+
+    // Verificar si se excede el límite
+    if (newCount >= 0 && (currentTotal + increment) <= totalUnitsAllowed) {
+        countSpan.textContent = newCount;
+    } else {
+        alert(`No puedes seleccionar más de ${totalUnitsAllowed} bombones en total.`);
     }
-}
+
+
 
 function flipCard(card) {
     card.classList.toggle('flipped');
@@ -105,3 +126,4 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
