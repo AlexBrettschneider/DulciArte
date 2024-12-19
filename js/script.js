@@ -1,19 +1,18 @@
-let totalCount = 9; // Cambiar a 12 en 12-bombones.html
-let currentCount = 0;
+let totalCount = 9; // Máximo inicial para la caja de 9 bombones
+let totalUnitsAllowed = totalCount; // Máximo permitido según cajas seleccionadas
+const boxPrice = 10; // Precio con descuento por caja
+const originalPrice = 12; // Precio original por caja
 
-let totalUnitsAllowed = 9; // Máximo de bombones por caja
-const boxPrice = 10; // Precio por caja después del descuento
-const originalPrice = 12; // Precio original por caja (sin descuento)
-
+// Actualizar el contador de cajas y recalcular precios
 function updateBoxes(change) {
     const boxCount = document.getElementById('box-count');
-    const discountedPriceDisplay = document.getElementById('price-display'); // Precio con descuento
-    const originalPriceDisplay = document.getElementById('original-price-display'); // Precio original
+    const discountedPriceDisplay = document.querySelector('.discounted-price'); // Precio con descuento
+    const originalPriceDisplay = document.querySelector('.original-price'); // Precio original
     let value = parseInt(boxCount.textContent) + change;
 
     if (value >= 1) {
         boxCount.textContent = value;
-        totalUnitsAllowed = value * 9; // Actualizar el límite de unidades permitido
+        totalUnitsAllowed = value * totalCount; // Actualizar el máximo permitido
 
         // Recalcular precios
         const totalDiscountedPrice = value * boxPrice;
@@ -26,6 +25,7 @@ function updateBoxes(change) {
     }
 }
 
+// Actualizar el contador de bombones por sabor
 function updateCount(event, button, increment) {
     event.stopPropagation();
     const countSpan = button.parentElement.querySelector('.count');
@@ -40,80 +40,30 @@ function updateCount(event, button, increment) {
     } else {
         alert(`No puedes seleccionar más de ${totalUnitsAllowed} bombones en total.`);
     }
+}
 
+// Reiniciar los contadores de sabores
+function resetCounters() {
+    document.querySelectorAll('.count').forEach(span => (span.textContent = "0"));
+}
 
-
+// Girar tarjeta de sabor para mostrar ingredientes
 function flipCard(card) {
     card.classList.toggle('flipped');
 }
 
+// Mostrar el formulario al final de la selección
 function showForm() {
     document.getElementById('order-form').classList.remove('hidden');
 }
 
-function submitOrder() {
-    const name = document.getElementById('name').value;
-    const address = document.getElementById('address').value;
-    const date = document.getElementById('date').value;
-    const comments = document.getElementById('comments').value;
-    const boxCount = document.getElementById('box-count').innerText; // Cantidad de cajas
-
-    // Recoger los sabores seleccionados y sus cantidades
-    const flavorCards = document.querySelectorAll('.flavor-wrapper');
-    let flavorsSummary = "";
-    flavorCards.forEach((card, index) => {
-        const flavorName = card.querySelector('.flavor-name').innerText;
-        const count = card.querySelector('.count').innerText;
-
-        if (parseInt(count) > 0) { // Solo incluye sabores seleccionados
-            flavorsSummary += `- ${flavorName}: ${count} unidades%0A`;
-        }
-    });
-
-    // Validación de campos obligatorios
-    if (name && address && date) {
-        const subject = "Pedido de Bombones - DulciArte";
-        const body = `Nombre: ${name}%0A` +
-                     `Dirección: ${address}%0A` +
-                     `Fecha de Entrega: ${date}%0A` +
-                     `Comentarios: ${comments}%0A%0A` +
-                     `Cantidad de Cajas: ${boxCount}%0A` +
-                     `Detalle de sabores:%0A${flavorsSummary}`;
-
-        // Reemplaza con tu correo
-        window.location.href = `mailto:corizam.cz@gmail.com?cc=alexbrett1996@gmail.com&subject=${subject}&body=${body}`;
-
-    } else {
-        alert("Por favor, completa todos los campos obligatorios antes de confirmar el pedido.");
-    }
-}
-
-
-function resetCounters() {
-    currentCount = 0;
-    document.querySelectorAll('.count').forEach(span => (span.textContent = "0"));
-}
-
-// Establecer fecha mínima de entrega (4 días después del día actual)
+// Validar la fecha mínima de entrega (4 días después del día actual)
 document.addEventListener("DOMContentLoaded", function () {
     const dateInput = document.getElementById('date');
     if (dateInput) {
-        const today = new Date();
-        today.setDate(today.getDate() + 4);
-        const minDate = today.toISOString().split('T')[0];
-        dateInput.setAttribute('min', minDate);
-    }
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    const dateInput = document.getElementById('date');
-    if (dateInput) {
-        // Obtener la fecha actual
         const today = new Date();
         today.setDate(today.getDate() + 4); // Sumar 4 días
         const minDate = today.toISOString().split('T')[0];
-
-        // Establecer el valor mínimo del input
         dateInput.setAttribute('min', minDate);
 
         // Validación manual para móviles y navegadores no compatibles
@@ -126,4 +76,5 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
 
