@@ -271,3 +271,67 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #800000;
+    width: 50%;
+    max-width: 400px;
+    border-radius: 10px;
+    text-align: left; /* Cambiar a la izquierda para alineación mejorada */
+}
+
+.modal-content h2 {
+    text-align: center; /* Centrar el título */
+    color: #800000;
+    margin-bottom: 20px;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaciado entre elementos */
+}
+
+.modal-content form label {
+    font-weight: bold;
+    color: #800000;
+}
+
+.modal-content form input,
+.modal-content form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.modal-content form button {
+    align-self: center;
+    background-color: #800000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-content form button:hover {
+    background-color: #a00000;
+}

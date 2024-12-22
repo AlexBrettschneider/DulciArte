@@ -88,3 +88,79 @@ function showForm() {
     document.getElementById('order-form').classList.remove('hidden');
 }
 
+function openModal() {
+    const modal = document.getElementById('order-modal');
+    modal.style.display = 'block';
+}
+
+function closeModal() {
+    const modal = document.getElementById('order-modal');
+    modal.style.display = 'none';
+}
+
+// Cerrar el modal si se hace clic fuera de él
+window.onclick = function (event) {
+    const modal = document.getElementById('order-modal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+};
+
+function populateFlavors() {
+    const flavorCards = document.querySelectorAll('.flavor-wrapper');
+    let flavors = [];
+    flavorCards.forEach(card => {
+        const flavorName = card.querySelector('.flavor-name').textContent; // Nombre del sabor
+        const flavorCount = card.querySelector('.count').textContent; // Cantidad seleccionada
+        if (parseInt(flavorCount) > 0) {
+            flavors.push(`${flavorName}: ${flavorCount}`); // Agregar al array solo si la cantidad es mayor a 0
+        }
+    });
+
+    // Agregar los sabores seleccionados al campo oculto del formulario
+    document.getElementById('flavors-input').value = flavors.join('\n');
+}
+
+function generateMailto() {
+    // Capturar datos del formulario
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const address = document.getElementById('address').value;
+    const date = document.getElementById('date').value;
+    const comments = document.getElementById('comments').value;
+
+    // Detectar si es caja de 9 o 12 bombones
+    const is12Bombones = document.body.classList.contains('page-12');
+    const boxType = is12Bombones ? '12 bombones' : '9 bombones';
+
+    // Obtener sabores y cantidades seleccionadas
+    const flavorCards = document.querySelectorAll('.flavor-wrapper');
+    let flavors = '';
+    flavorCards.forEach(card => {
+        const flavorName = card.querySelector('.flavor-name').textContent;
+        const flavorCount = card.querySelector('.count').textContent;
+        if (parseInt(flavorCount) > 0) {
+            flavors += `${flavorName}: ${flavorCount}\n`;
+        }
+    });
+
+    // Construir asunto y cuerpo del correo
+    const subject = `Pedido de bombones - ${name}`;
+    const body = `
+    Pedido de Bombones:
+    Nombre: ${name}
+    Teléfono: ${phone}
+    Dirección: ${address}
+    Fecha de Entrega: ${date}
+    Comentarios: ${comments}
+    Tipo de Caja: ${boxType}
+
+    Sabores Elegidos:
+    ${flavors}`;
+
+    // Crear el enlace mailto
+    const mailtoLink = `mailto:corizam.cz@gmail.com?cc=alexbrett1996@gmail.com&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    // Redirigir al enlace
+    window.location.href = mailtoLink;
+}

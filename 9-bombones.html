@@ -143,21 +143,33 @@
         </div>
 
         <!-- Botón Enviar Pedido -->
-        <button class="order-button" onclick="showForm()">Enviar pedido</button>
+        <button class="order-button" onclick="openModal()">Enviar pedido</button>
 
-        <!-- Formulario oculto -->
-        <div class="form-container hidden" id="order-form">
-            <label for="name">Nombre:</label>
-            <input type="text" id="name" required>
-            <label for="phone">Teléfono:</label>
-            <input type="text" id="phone" required>
-            <label for="address">Dirección:</label>
-            <input type="text" id="address" required>
-            <label for="date">Fecha de entrega:</label>
-            <input type="date" id="date" required>
-            <label for="comments">Comentarios:</label>
-            <textarea id="comments"></textarea>
-            <button onclick="submitOrder()">Confirmar Pedido</button>
+        <!-- Modal oculto -->
+        <div id="order-modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-button" onclick="closeModal()">&times;</span>
+                <h2>Formulario de Pedido</h2>
+                <form id="order-form">
+                    <label for="name">Nombre:</label>
+                    <input type="text" id="name" required>
+                
+                    <label for="phone">Teléfono:</label>
+                    <input type="text" id="phone" required>
+                
+                    <label for="address">Dirección:</label>
+                    <input type="text" id="address" required>
+                
+                    <label for="date">Fecha de entrega:</label>
+                    <input type="date" id="date" required>
+                
+                    <label for="comments">Comentarios:</label>
+                    <textarea id="comments"></textarea>
+                
+                    <button type="button" onclick="generateMailto()">Confirmar Pedido</button>
+                </form>
+                                
+            </div>
         </div>
     </div>
 </body>
